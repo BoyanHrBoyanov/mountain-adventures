@@ -1,7 +1,7 @@
 import { TopStory } from "./TopStory";
 
 
-export const TopStories = ({
+export const Home = ({
 	stories
 }) => {
 	return (

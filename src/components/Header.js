@@ -20,8 +20,8 @@ export const Header = () => {
 						{/* <!-- Collect the nav links, forms, and other content for toggling --> */}
 						<div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul className="nav navbar-nav navbar-right">
-								<li><a href="registration.html">Signup</a></li>
-								<li><a href="login.html">Login</a></li>
+								<li><a href="/register">Signup</a></li>
+								<li><a href="/login">Login</a></li>
 								<li className="dropdown">
 									<a href="#" className="dropdown-toggle" data-toggle="dropdown">Menu <span className="caret"></span></a>
 									<ul className="dropdown-menu" role="menu">

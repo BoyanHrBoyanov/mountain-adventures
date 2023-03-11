@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router-dom'
 
 import { getAllItems } from './utils/data'
 
@@ -10,11 +11,11 @@ import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { Subscribe } from './components/Subscribe';
 import { Team } from './components/Team';
-import { TopStories } from './components/TopStories';
+import { Home } from './components/Home';
 import { Login } from './components/Login';
+import { Register } from './components/Register';
 
 function App() {
-	const baseUrl = `http://localhost:3030/jsonstore`;
 	const [stories, setStories] = useState([]);
 
 	useEffect(() => {
@@ -23,26 +24,17 @@ function App() {
 			setStories(Array.from(Object.values(data)));
 		}
 		getData();
-	}, [])
-	
-	console.log(stories);
+	}, []);
+
 	return (
 		<div className="App">
 			<Header />
 
-			{/* <Banner /> */}
-
-			{/* <AfterBanner /> */}
-
-			<TopStories stories={stories} />
-
-			<Login />
-
-			<Blog />
-
-			<Subscribe />
-
-			<Team />
+			<Routes>
+				<Route path='/' element={<Home stories={stories}/>} />
+				<Route path='/login' element={<Login />} />
+				<Route path='/register' element={<Register />} />
+			</Routes>
 
 			<Footer />
 
