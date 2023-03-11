@@ -11,7 +11,7 @@ export const Home = ({
 					<h2>Upcoming events</h2>
 				</div>
 				<div className="row">
-					{stories.map(s => <TopStory story={s} />)}
+					{stories.map(s => <TopStory key={s._id} story={s} />)}
 				</div>
 			</div>
 		</div>
