@@ -13,7 +13,7 @@ export const Team = () => {
                             <img className="img-responsive" src="img/team/1.jpg" alt="Team Member" />
                             <h3>Adam Miser</h3>
                             <span className="dig">CEO</span>
-                            <a href="#">executive.member@bloger.com</a>
+                            {/* <a href="#">executive.member@bloger.com</a> */}
                         </div>
                     </div>
                     <div className="col-md-3 col-sm-3">
@@ -21,7 +21,7 @@ export const Team = () => {
                             <img className="img-responsive" src="img/team/2.jpg" alt="Team Member" />
                             <h3>Adam Miser</h3>
                             <span className="dig">CEO</span>
-                            <a href="#">executive.member@bloger.com</a>
+                            {/* <a href="#">executive.member@bloger.com</a> */}
                         </div>
                     </div>
                     <div className="col-md-3 col-sm-3">
@@ -29,7 +29,7 @@ export const Team = () => {
                             <img className="img-responsive" src="img/team/1.jpg" alt="Team Member" />
                             <h3>Adam Miser</h3>
                             <span className="dig">CEO</span>
-                            <a href="#">executive.member@bloger.com</a>
+                            {/* <a href="#">executive.member@bloger.com</a> */}
                         </div>
                     </div>
                     <div className="col-md-3 col-sm-3">
@@ -37,7 +37,7 @@ export const Team = () => {
                             <img className="img-responsive" src="img/team/2.jpg" alt="Team Member" />
                             <h3>Adam Miser</h3>
                             <span className="dig">CEO</span>
-                            <a href="#">executive.member@bloger.com</a>
+                            {/* <a href="#">executive.member@bloger.com</a> */}
                         </div>
                     </div>
                 </div>

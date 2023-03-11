@@ -1,4 +1,4 @@
-import { del, get, post, put } from "./api.js";
+import { get, post } from "./api.js"; //del, , put
 
 let endpoints = {
     'getAll': '/jsonstore/adventures',

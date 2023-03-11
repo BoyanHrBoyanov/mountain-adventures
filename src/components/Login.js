@@ -1,16 +1,43 @@
+import { useState } from "react";
+
 export const Login = () => {
+
+	const [loginValues, setLoginValues] = useState({
+		email: '',
+		password: ''
+	});
+
+	const onValueChange = (e) => {
+		setLoginValues(state => ({...state, [e.target.name]: e.target.value}));
+	};
+
+	const loginSubmit = (e) => {
+		e.preventDefault();
+		console.log(loginValues);
+	};
+
 	return (
-		<div class="banner">
-			<div class="login-area">
+		<div className="banner">
+			<div className="login-area">
 				<h3>Login</h3>
-				<form role="form" id="login-form">
-					<div class="form-group">
-						<input type="text" class="form-control" name="email" placeholder="Email" />
+				<form onSubmit={loginSubmit}>
+					<div className="form-group">
+						<input type="text" 
+							className="form-control" 
+							name="email" 
+							placeholder="Email"
+							value={loginValues.username}
+							onChange={onValueChange} />
 					</div>
-					<div class="form-group">
-						<input type="password" class="form-control" name="password" placeholder="Password" />
+					<div className="form-group">
+						<input type="password" 
+							className="form-control" 
+							name="password" 
+							placeholder="Password" 
+							value={loginValues.password}
+							onChange={onValueChange} />
 					</div>
-					<button type="submit" class="btn btn-default">Login</button>
+					<button type="submit" className="btn btn-default">Login</button>
 				</form>
 			</div>
 		</div>
