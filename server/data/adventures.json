@@ -1,0 +1,30 @@
+{
+    "257d09d3-69b2-4af4-aaeb-e0d28e610ada": {
+        "name": "Kalofer - Botev peak",
+        "type": "hike",
+        "season": "summer",
+        "mountain": "Stara planina",
+        "denivelation": 1651,
+        "distance": 13.75,
+        "duration": "7:45",
+        "difficultyLevel": 5,
+        "description": "Very difficult hike. The denivelation and the distance are a lot, but the views are awesome. I suggest it to everyone who is in a good shape",
+        "imageUrl": "https://tripsjournal.com/wp-content/uploads/2021/02/32-alpiiskoto-bilo-na-stara-planina.jpg",
+        "_id": "257d09d3-69b2-4af4-aaeb-e0d28e610ada",
+        "ownerId": "35c62d76-8152-4626-8712-eeb96381bea8"
+    },
+    "9927abba-4efd-4c4a-ad2b-ea0a4766b005": {
+        "name": "Malyovitsa",
+        "type": "hike",
+        "season": "summer",
+        "mountain": "Rila",
+        "denivelation": 1006,
+        "distance": 6.5,
+        "duration": "4:00",
+        "difficultyLevel": 4,
+        "description": "This is the Bulgarian mountainer classic! Quite difficult one with very steep hills to climb, but with stunning views. Absolutely recommend for anyone who hasn't done it yet!",
+        "imageUrl": "https://it-maps.iskartour.com/wp-content/uploads/galery_thumbnails/Malyovitsa.jpg",
+        "_id": "9927abba-4efd-4c4a-ad2b-ea0a4766b005",
+        "ownerId": "847ec027-f659-4086-8032-5173e2f9c93a"
+    }
+}
