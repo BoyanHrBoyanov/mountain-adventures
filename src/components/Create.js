@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { post } from "../utils/api";
-
-
-export const Create = () => {
+export const Create = ({
+	getCreateObj
+}) => {
 
 	const navigate = useNavigate();
 	const [createValues, setCreateValues] = useState({
@@ -24,19 +23,19 @@ export const Create = () => {
 		setCreateValues(state => ({ ...state, [e.target.name]: e.target.value }));
 	};
 
-	const createSubmit = async (e) => {
+	const createSubmit = (e) => {
 		e.preventDefault();
 		createValues["_createdOn"] = Date.now();
 		createValues["ownerId"] = JSON.parse(sessionStorage.getItem('user'))._id;
-		const data = await post('/jsonstore/adventures', createValues);
-		console.log(data);
+		getCreateObj(createValues);
 	}
 
 	useEffect(() => {
 		if (!sessionStorage.getItem('user')) {
+			sessionStorage.setItem('to', '/create');
 			navigate('/login');
 		}
-	}, [])
+	}, [navigate]);
 
 	return (
 		<div className="banner">

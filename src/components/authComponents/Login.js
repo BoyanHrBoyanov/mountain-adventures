@@ -19,7 +19,12 @@ export const Login = () => {
 	const loginSubmit = async (e) => {
 		e.preventDefault();
 		await login(loginValues);
-		navigate("/");
+		if (sessionStorage.getItem('to')) {
+			navigate(sessionStorage.getItem('to'));
+			sessionStorage.removeItem('to');
+		} else {
+			navigate("/");
+		}
 	};
 
 

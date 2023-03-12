@@ -1,6 +1,11 @@
+import { useNavigate } from "react-router";
+
 import { useState } from "react";
+import { register } from "../../services/authService";
 
 export const Register = () => {
+	const navigate = useNavigate();
+
 	const [registerValues, setRegisterValues] = useState({
 		username: '',
 		email: '',
@@ -12,9 +17,23 @@ export const Register = () => {
 		setRegisterValues(state => ({...state, [e.target.name]: e.target.value}));
 	};
 
-	const registerSubmit = (e) => {
+	const registerSubmit = async (e) => {
 		e.preventDefault();
-		console.log(registerValues);
+		if (registerValues.password !== registerValues.repass) {
+			return window.alert('Password missmatch!');
+		}
+		const obj = {
+			email: registerValues.email,
+			password: registerValues.password,
+			username: registerValues.username
+		}
+		await register(obj);
+		if (sessionStorage.getItem('to')) {
+			navigate(sessionStorage.getItem('to'));
+			sessionStorage.removeItem('to');
+		} else {
+			navigate("/");
+		}
 	}
 
 	return (
