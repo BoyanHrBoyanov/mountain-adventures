@@ -27,6 +27,7 @@ export const Create = ({
 		e.preventDefault();
 		createValues["_createdOn"] = Date.now();
 		createValues["ownerId"] = JSON.parse(sessionStorage.getItem('user'))._id;
+		createValues["owner"] = JSON.parse(sessionStorage.getItem('user')).username;
 		getCreateObj(createValues);
 	}
 

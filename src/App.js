@@ -11,6 +11,7 @@ import { Home } from './components/Home';
 import { Login } from './components/authComponents/Login';
 import { Register } from './components/authComponents/Register';
 import { Create } from './components/Create';
+import { Catalog } from './components/Catalog';
 
 function App() {
 	const navigate = useNavigate();
@@ -53,6 +54,7 @@ function App() {
 				<Route path='/login' element={<Login />} />
 				<Route path='/register' element={<Register />} />
 				<Route path='/create' element={<Create getCreateObj={getCreateObj} />} />
+				<Route path='/catalog' element={<Catalog stories={stories} />} />
 			</Routes>
 
 			<Footer />

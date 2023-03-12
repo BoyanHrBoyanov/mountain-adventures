@@ -11,6 +11,7 @@
         "description": "Very difficult hike. The denivelation and the distance are a lot, but the views are awesome. I suggest it to everyone who is in a good shape",
         "imageUrl": "https://tripsjournal.com/wp-content/uploads/2021/02/32-alpiiskoto-bilo-na-stara-planina.jpg",
         "_id": "257d09d3-69b2-4af4-aaeb-e0d28e610ada",
+        "owner": "Peter",
         "ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
         "_createdOn": "1678567867194"
     },
@@ -26,6 +27,7 @@
         "description": "This is the Bulgarian mountainer classic! Quite difficult one with very steep hills to climb, but with stunning views. Absolutely recommend for anyone who hasn't done it yet!",
         "imageUrl": "https://it-maps.iskartour.com/wp-content/uploads/galery_thumbnails/Malyovitsa.jpg",
         "_id": "9927abba-4efd-4c4a-ad2b-ea0a4766b005",
+        "owner": "George",
         "ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
         "_createdOn": "1678567927843"
     },
@@ -41,6 +43,7 @@
         "description": "The best trek in my life. Even though it was so hard I loved it so much!",
         "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fc/E4_route_marker_Bulgaria.JPG",
         "_id": "ee6703b5-4cb1-4a4c-8f95-9da6a5bc6383",
+        "owner": "George",
         "ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
         "_createdOn": "1678567976322"
     },
@@ -56,6 +59,7 @@
         "description": "The best trek in my life. Even though it was so hard I loved it so much! Super shity at the end.",
         "imageUrl": "https://webnews.bg/uploads/images/02/3202/553202/768x432.jpg?_=1636642582",
         "_id": "ee6703b5-4cb1-4a4c-8f95-9da6a5bc6384",
+        "owner": "George",
         "ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
         "_createdOn": "1678569129130"
     }
