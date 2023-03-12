@@ -22,12 +22,7 @@ export const Register = () => {
 		if (registerValues.password !== registerValues.repass) {
 			return window.alert('Password missmatch!');
 		}
-		const obj = {
-			email: registerValues.email,
-			password: registerValues.password,
-			username: registerValues.username
-		}
-		await register(obj);
+		await register(registerValues);
 		if (sessionStorage.getItem('to')) {
 			navigate(sessionStorage.getItem('to'));
 			sessionStorage.removeItem('to');

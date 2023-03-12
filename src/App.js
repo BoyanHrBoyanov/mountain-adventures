@@ -52,7 +52,7 @@ function App() {
 				<Route path='/' element={<Home stories={lastThree} />} />
 				<Route path='/login' element={<Login />} />
 				<Route path='/register' element={<Register />} />
-				<Route path={'/create'} element={<Create getCreateObj={getCreateObj} />} />
+				<Route path='/create' element={<Create getCreateObj={getCreateObj} />} />
 			</Routes>
 
 			<Footer />

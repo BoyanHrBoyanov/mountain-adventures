@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 
 export const Header = () => {
+
+	const handleLogout = () => {
+		sessionStorage.clear();
+}
+
     return (
         <header>
 				<nav className="navbar navbar-default" role="navigation">
@@ -15,7 +20,7 @@ export const Header = () => {
 								<li><Link to="/login">Login</Link></li>
 								<li><Link to="/create">Create</Link></li>
 								<li><Link to="/catalog">Catalog</Link></li>
-								<li><Link to="/logout">Logout</Link></li>
+								<li><Link onClick={handleLogout} to="/">Logout</Link></li>
 							</ul>
 						</div>
 					</div>
