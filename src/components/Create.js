@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { post } from "../utils/api";
 
 
 export const Create = () => {
+
+	const navigate = useNavigate();
 	const [createValues, setCreateValues] = useState({
 		name: '',
 		type: 'bike',
@@ -19,10 +24,19 @@ export const Create = () => {
 		setCreateValues(state => ({ ...state, [e.target.name]: e.target.value }));
 	};
 
-	const createSubmit = (e) => {
+	const createSubmit = async (e) => {
 		e.preventDefault();
-		console.log(createValues);
+		createValues["_createdOn"] = Date.now();
+		createValues["ownerId"] = JSON.parse(sessionStorage.getItem('user'))._id;
+		const data = await post('/jsonstore/adventures', createValues);
+		console.log(data);
 	}
+
+	useEffect(() => {
+		if (!sessionStorage.getItem('user')) {
+			navigate('/login');
+		}
+	}, [])
 
 	return (
 		<div className="banner">
@@ -141,10 +155,11 @@ export const Create = () => {
 								onChange={onValueChange}>
 							</textarea>
 						</div>
-						<button type="submit" className="btn btn-default">SignUp</button>
+						<button type="submit" className="btn btn-default">Create</button>
 					</form>
 				</div>
 			</div>
 		</div>
 	);
+
 }
