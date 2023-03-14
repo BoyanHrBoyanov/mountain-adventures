@@ -1,7 +1,7 @@
 {
     "257d09d3-69b2-4af4-aaeb-e0d28e610ada": {
         "name": "Kalofer - Botev peak",
-        "type": "hike",
+        "type": "Hike",
         "season": "summer",
         "mountain": "Stara planina",
         "denivelation": "1651",
@@ -13,11 +13,12 @@
         "_id": "257d09d3-69b2-4af4-aaeb-e0d28e610ada",
         "owner": "Peter",
         "ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+        "createdOn": "3/11/2023, 10:51:07 PM",
         "_createdOn": "1678567867194"
     },
     "9927abba-4efd-4c4a-ad2b-ea0a4766b005": {
         "name": "Malyovitsa",
-        "type": "hike",
+        "type": "Hike",
         "season": "summer",
         "mountain": "Rila",
         "denivelation": "1006",
@@ -29,11 +30,12 @@
         "_id": "9927abba-4efd-4c4a-ad2b-ea0a4766b005",
         "owner": "George",
         "ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
+        "createdOn": "3/11/2023, 10:52:07 PM",
         "_createdOn": "1678567927843"
     },
     "ee6703b5-4cb1-4a4c-8f95-9da6a5bc6383": {
         "name": "E4",
-        "type": "trek",
+        "type": "Trek",
         "season": "summer",
         "mountain": "Vitosha, Verila, Rila, Pirin, Slavyanka",
         "denivelation": "17000",
@@ -45,11 +47,12 @@
         "_id": "ee6703b5-4cb1-4a4c-8f95-9da6a5bc6383",
         "owner": "George",
         "ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
+        "createdOn": "3/11/2023, 10:52:56 PM",
         "_createdOn": "1678567976322"
     },
     "ee6703b5-4cb1-4a4c-8f95-9da6a5bc6384": {
-        "name": "E3",
-        "type": "trek",
+        "name": "Kom - Emine",
+        "type": "Trek",
         "season": "summer",
         "mountain": "Stara planina",
         "denivelation": "25000",
@@ -61,6 +64,7 @@
         "_id": "ee6703b5-4cb1-4a4c-8f95-9da6a5bc6384",
         "owner": "George",
         "ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
+        "createdOn": "3/11/2023, 11:12:09 PM",
         "_createdOn": "1678569129130"
     }
 }

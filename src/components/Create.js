@@ -25,7 +25,10 @@ export const Create = ({
 
 	const createSubmit = (e) => {
 		e.preventDefault();
-		createValues["_createdOn"] = Date.now();
+		const currentTime = Date.now();
+		const formattedTime = new Date(currentTime).toLocaleString();
+		createValues["_createdOn"] = currentTime;
+		createValues["createdOn"] = formattedTime;
 		createValues["ownerId"] = JSON.parse(sessionStorage.getItem('user'))._id;
 		createValues["owner"] = JSON.parse(sessionStorage.getItem('user')).username;
 		getCreateObj(createValues);
@@ -58,9 +61,9 @@ export const Create = ({
 							<div className="form-group col-sm-4">
 								<label htmlFor="type">Type</label>
 								<select className="form-control" name="type" id="type" value={createValues.type} onChange={onValueChange}>
-									<option value="bike">Bike</option>
-									<option value="hike">Hike</option>
-									<option value="trek">Trek</option>
+									<option value="Bike">Bike</option>
+									<option value="Hike">Hike</option>
+									<option value="Trek">Trek</option>
 								</select>
 							</div>
 						</div>

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 export const CatalogItem = ({
     story
 }) => {
-    const date = new Date(Number(story._createdOn));
 
     return (
         <div className="row blog">
@@ -11,7 +10,7 @@ export const CatalogItem = ({
             <div className="col-sm-4">
                 <h3><Link to={`/details/${story._id}`}>{story.name}</Link></h3>
                 <span className="meta">
-                    {date.toLocaleString()} | By: {story.owner}
+                    {story.createdOn.split(', ')[0]} | {story.type} | By: {story.owner}
                     </span>
                 <p>{story.description}</p>
                 <div className="text-center">

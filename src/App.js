@@ -12,6 +12,7 @@ import { Login } from './components/authComponents/Login';
 import { Register } from './components/authComponents/Register';
 import { Create } from './components/Create';
 import { Catalog } from './components/Catalog';
+import { Details } from './components/Details';
 
 function App() {
 	const navigate = useNavigate();
@@ -42,21 +43,20 @@ function App() {
 			})
 			.catch(err => {
 				console.log(err);
-			})
+			});
 	}, []);
 
 	return (
 		<div className="App">
 			<Header />
-
-			<Routes>
-				<Route path='/' element={<Home stories={lastThree} />} />
-				<Route path='/login' element={<Login />} />
-				<Route path='/register' element={<Register />} />
-				<Route path='/create' element={<Create getCreateObj={getCreateObj} />} />
-				<Route path='/catalog' element={<Catalog stories={stories} />} />
-			</Routes>
-
+				<Routes>
+					<Route path='/' element={<Home stories={lastThree} />} />
+					<Route path='/login' element={<Login />} />
+					<Route path='/register' element={<Register />} />
+					<Route path='/create' element={<Create getCreateObj={getCreateObj} />} />
+					<Route path='/catalog' element={<Catalog stories={stories} />} />
+					<Route path='/details/:storyId' element={<Details />} />
+				</Routes>
 			<Footer />
 
 		</div>

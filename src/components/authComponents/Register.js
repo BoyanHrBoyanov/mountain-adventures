@@ -35,7 +35,7 @@ export const Register = () => {
 			<div className="banner">
 				<div className="container">
 					<div className="register-area">
-						<h3>Sign Up</h3>
+						<h3>Register</h3>
 						<form onSubmit={registerSubmit}>
 							<div className="form-group">
 								<input type="text" 
@@ -69,7 +69,7 @@ export const Register = () => {
 									value={registerValues.repass}
 									onChange={onValueChange} />
 							</div>
-							<button type="submit" className="btn btn-default">SignUp</button>
+							<button type="submit" className="btn btn-default">Register</button>
 						</form>
 					</div>
 				</div>

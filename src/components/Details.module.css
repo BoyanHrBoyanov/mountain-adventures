@@ -1,0 +1,35 @@
+.table {
+    margin: 2em;
+}
+
+.key {
+    display: grid;
+    justify-content: start;
+}
+
+.odd {
+    background-color: rgb(252, 245, 235);
+}
+
+.table thead {
+    border: 1px solid #ddd;
+    background-color: rgb(252, 245, 235);
+    padding: 8px;
+}
+
+.table th {
+    padding: 2em;
+}
+
+.table tr {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.table td {
+    padding: 2em;
+}
+
+.img {
+    margin: 2em;
+}
