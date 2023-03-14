@@ -7,6 +7,7 @@ import styles from './Details.module.css';
 export const Details = () => {
     const { storyId } = useParams();
     const [story, setStory] = useState({});
+    const [comment, setComment] = useState('');
 
     useEffect(() => {
         get(`/jsonstore/adventures/${storyId}`)
@@ -18,11 +19,19 @@ export const Details = () => {
             });
     }, [storyId]);
 
+    const OnChangeHandler = (e) => {
+        setComment(e.target.value);
+    };
+
+    const sendComment = (e) => {
+        e.preventDefault();
+        console.log(comment);
+    };
+
     return (
-        <div className="row">
-            <div className="entry">
+        <div className='row'>
                 <div className="col-sm-4">
-                    
+
                     <table className={styles.table}>
                         <thead>
                             <th><h4>Title:</h4></th>
@@ -64,11 +73,19 @@ export const Details = () => {
                         </tbody>
                     </table>
                 </div>
-                <div className="col-sm-7">
-                    <img className={styles.img} src={story.imageUrl} alt={story.name} />
-                    <p>Description: {story.description}</p>
+                <div className="col-sm-8">
+                    <div className="row">
+                        <img className={styles.img} src={story.imageUrl} alt={story.name} />
+                        <p className={styles.description}>{story.description}</p>
+                    </div>
+                    <div className="row">
+                        <h4>Comments:</h4>
+                        <form onSubmit={sendComment} className={styles.commentForm}>
+                            <textarea value={comment} onChange={OnChangeHandler} name="comments" cols="60" rows="3"></textarea>
+                            <button type="submit" className="btn btn-default">Send</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
         </div>
     );
 }

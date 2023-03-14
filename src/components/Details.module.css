@@ -32,4 +32,16 @@
 
 .img {
     margin: 2em;
+    max-width: 700px;
+    max-height: 500px;
+}
+
+.description {
+    margin-left: 2em;
+}
+
+.commentForm {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
