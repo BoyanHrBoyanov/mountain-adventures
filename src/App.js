@@ -11,13 +11,14 @@ import { Home } from './components/Home';
 import { Login } from './components/authComponents/Login';
 import { Register } from './components/authComponents/Register';
 import { Create } from './components/Create';
-import { Catalog } from './components/Catalog';
-import { Details } from './components/Details';
+import { Catalog } from './components/Catalog/Catalog';
+import { Details } from './components/Details/Details';
 
 function App() {
 	const navigate = useNavigate();
 	const [stories, setStories] = useState([]);
 	const [lastThree, setLastThree] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	const getCreateObj = async (obj) => {
 		const data = await post('/jsonstore/adventures', obj);
@@ -32,6 +33,7 @@ function App() {
 		arr.sort((a, b) => b._createdOn - a._createdOn);
 		setStories(arr);
 		setLastThree(arr.slice(0, 3));
+		setLoading(false);
 	}
 
 	useEffect(() => {
@@ -39,7 +41,6 @@ function App() {
 			.then(data => {
 				const arr = Array.from(Object.values(data));
 				getLastThree(arr);
-				console.log('gettt');
 			})
 			.catch(err => {
 				console.log(err);
@@ -50,11 +51,11 @@ function App() {
 		<div className="App">
 			<Header />
 				<Routes>
-					<Route path='/' element={<Home stories={lastThree} />} />
+					<Route path='/' element={<Home stories={lastThree} loading={loading} />} />
 					<Route path='/login' element={<Login />} />
 					<Route path='/register' element={<Register />} />
 					<Route path='/create' element={<Create getCreateObj={getCreateObj} />} />
-					<Route path='/catalog' element={<Catalog stories={stories} />} />
+					<Route path='/catalog' element={<Catalog stories={stories} loading={loading} />} />
 					<Route path='/details/:storyId' element={<Details />} />
 				</Routes>
 			<Footer />
