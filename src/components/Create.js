@@ -16,7 +16,8 @@ export const Create = ({
 		duration: 0,
 		durType: '',
 		description: '',
-		imageUrl: ''
+		imageUrl: '',
+
 	});
 
 	const onValueChange = (e) => {
@@ -25,11 +26,6 @@ export const Create = ({
 
 	const createSubmit = (e) => {
 		e.preventDefault();
-		const currentTime = Date.now();
-		const formattedTime = new Date(currentTime).toLocaleString();
-		createValues["_createdOn"] = currentTime;
-		createValues["createdOn"] = formattedTime;
-		createValues["ownerId"] = JSON.parse(sessionStorage.getItem('user'))._id;
 		createValues["owner"] = JSON.parse(sessionStorage.getItem('user')).username;
 		getCreateObj(createValues);
 	}

@@ -21,7 +21,7 @@ function App() {
 	const [loading, setLoading] = useState(true);
 
 	const getCreateObj = async (obj) => {
-		const data = await post('/jsonstore/adventures', obj);
+		const data = await post('/data/adventures', obj);
 		getLastThree(stories, data);
 		navigate('/');
 	}
@@ -37,7 +37,7 @@ function App() {
 	}
 
 	useEffect(() => {
-		get('/jsonstore/adventures')
+		get('/data/adventures')
 			.then(data => {
 				const arr = Array.from(Object.values(data));
 				getLastThree(arr);

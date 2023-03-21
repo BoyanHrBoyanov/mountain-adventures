@@ -6,15 +6,14 @@ import { get } from "../../utils/api";
 import styles from './Details.module.css';
 
 
-export const Details = ({
-}) => {
+export const Details = () => {
     const { storyId } = useParams();
     const [story, setStory] = useState({});
     const [comment, setComment] = useState('');
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        get(`/jsonstore/adventures/${storyId}`)
+        get(`/data/adventures/${storyId}`)
             .then(data => {
                 setStory(data);
             })
@@ -34,14 +33,16 @@ export const Details = ({
     };
 
     return loading
-    ? (<LoadingSpinner />)
-    : (<div className='row'>
+        ? (<LoadingSpinner />)
+        : (<div className='row'>
             <div className="col-sm-4">
 
                 <table className={styles.table}>
                     <thead>
-                        <th><h4>Title:</h4></th>
-                        <th><h4>{story.name}</h4></th>
+                        <tr>
+                            <th><h4>Title:</h4></th>
+                            <th><h4>{story.name}</h4></th>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr>
