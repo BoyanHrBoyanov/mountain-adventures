@@ -1,5 +1,6 @@
 .table {
     margin: 2em;
+    color: black;
 }
 
 .key {
@@ -8,12 +9,12 @@
 }
 
 .odd {
-    background-color: rgb(252, 245, 235);
+    background-color: #f08349;
 }
 
 .table thead {
     border: 1px solid #ddd;
-    background-color: rgb(252, 245, 235);
+    background-color: #f08349;
     padding: 8px;
 }
 
@@ -38,6 +39,7 @@
 
 .description {
     margin-left: 2em;
+    color: black;
 }
 
 .commentForm {

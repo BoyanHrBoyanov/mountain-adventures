@@ -1,3 +1,18 @@
+.h1 {
+    margin-bottom: 5rem;
+}
+
+.font {
+    border-radius: 100px;
+    background-image: url("../../public/img/home-font.jpg");
+    /* height: 60vh; */
+    height: 560px;
+    width: 940px;
+    color: rgb(224 219 70);
+    padding-top: 2rem;
+    margin: auto;
+}
+
 .trio {
     display: inline-flex;
 }

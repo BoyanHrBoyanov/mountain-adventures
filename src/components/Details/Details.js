@@ -12,7 +12,6 @@ export const Details = ({
     const [story, setStory] = useState({});
     const [comment, setComment] = useState('');
     const [loading, setLoading] = useState(true);
-    // TODO: make spinner work!!!
 
     useEffect(() => {
         get(`/jsonstore/adventures/${storyId}`)
@@ -34,8 +33,9 @@ export const Details = ({
         console.log(comment);
     };
 
-    return (
-        <div className='row'>
+    return loading
+    ? (<LoadingSpinner />)
+    : (<div className='row'>
             <div className="col-sm-4">
 
                 <table className={styles.table}>
@@ -92,7 +92,5 @@ export const Details = ({
                     </form>
                 </div>
             </div>
-        </div>
-
-    )
+        </div>)
 }

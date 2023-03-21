@@ -3,68 +3,70 @@
  * Email 		: himanshucse2012@gmail.com
  * Website	:	http://www.indioweb.in/portfolio
  */
- 
+
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600);
- 
+
 /*
  * Basic CSS starts 
  */
+ .App {
+	background: rgb(252, 78, 69);
+	background: linear-gradient(212deg, rgba(252, 78, 69, 1) 0%, rgba(253, 198, 29, 1) 57%, rgba(255, 252, 0, 1) 100%);
+	height: auto;
+ }
 
-body{
+body {
 	font-family: 'Open Sans', Sans Serif;
 	font-weight: 400;
 	color: #545454;
 	-webkit-font-smoothing: antialiased;
 }
 
-h1,h2,h3,h4,h5,h6{
+h1, h2, h3, h4, h5, h6 {
 	font-family: 'Open Sans', Sans Serif;
 	font-weight: 600;
 }
 
-p{
-	margin:0;
-	padding:0;
+p {
+	margin: 0;
+	padding: 0;
 	color: #787878;
 }
 
-a{
+a {
 	text-decoration: none;
 	color: #d65814;
 }
 
-a:hover{
+a:hover {
 	text-decoration: none;
 	color: #a93c01;
 }
 
-a:hover,a:active,a:focus {
+a:hover, a:active, a:focus {
 	outline: 0;
 }
 
-hr{
-
-}
-
 :focus {
-	outline:none;
+	outline: none;
 }
 
 ::-moz-focus-inner {
-	border:0;
+	border: 0;
 }
 
 /* 
  * Basic CSS ends 
  */
 
-header .navbar { 
+header .navbar {
 	margin: 0;
 	background: #d65814;
 	border-radius: 0;
-	border-bottom: 2px solid rgba(0,0,0,0.2); 
-	box-shadow: 0 1px 15px rgba(0,0,0,0.2);
+	border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+	box-shadow: 0 1px 15px rgba(0, 0, 0, 0.2);
 }
+
 header .navbar-default .navbar-nav>li>a {
 	margin: 15px 3px;
 	padding-top: 6px;
@@ -73,9 +75,9 @@ header .navbar-default .navbar-nav>li>a {
 	border-radius: 2px;
 }
 
-header .navbar-default .navbar-nav>li>a:hover, 
+header .navbar-default .navbar-nav>li>a:hover,
 header .navbar-default .navbar-nav>li>a:focus,
-header .navbar-default .navbar-nav>li.open>a:hover, 
+header .navbar-default .navbar-nav>li.open>a:hover,
 header .navbar-default .navbar-nav>li.open>a:focus {
 	background: #fff;
 }
@@ -84,7 +86,8 @@ header .navbar-nav .dropdown-menu {
 	top: 57px;
 	border-radius: 3px;
 }
-header .navbar-nav .dropdown-menu:after, 
+
+header .navbar-nav .dropdown-menu:after,
 header .navbar-nav .dropdown-menu:before {
 	bottom: 100%;
 	right: 20px;
@@ -108,10 +111,12 @@ header .navbar-nav .dropdown-menu:before {
 	border-width: 8px;
 	margin-right: -1px;
 }
+
 header .navbar-brand {
 	padding: 0;
 	height: auto;
 }
+
 header .navbar-brand img {
 	position: relative;
 	top: 5px;
@@ -121,7 +126,7 @@ header .navbar-brand img {
 /*
  * Banner 
  */
- 
+
 .banner {
 	background: #e47133;
 	padding-top: 120px;
@@ -137,6 +142,7 @@ header .navbar-brand img {
 	color: #eee;
 	text-transform: capitalize;
 }
+
 .banner p {
 	max-width: 700px;
 	margin: 0 auto;
@@ -151,7 +157,7 @@ header .navbar-brand img {
 /* 
  * after banner content
  */
- 
+
 .after-banner {
 	padding-top: 60px;
 }
@@ -167,7 +173,7 @@ header .navbar-brand img {
 	font-size: 24px;
 }
 
-.after-banner .ab-item  p {
+.after-banner .ab-item p {
 	font-size: 14px;
 	line-height: 24px;
 	letter-spacing: 0.025em;
@@ -177,11 +183,12 @@ header .navbar-brand img {
  * default heading
  */
 
-.default-heading  {
+.default-heading {
 	margin-top: 20px;
 	margin-bottom: 10px;
 }
-.default-heading h2{
+
+.default-heading h2 {
 	margin-top: 0;
 	font-size: 30px;
 	color: #676767;
@@ -221,7 +228,7 @@ header .navbar-brand img {
 	font-style: italic;
 }
 
-.event .event-item  p {
+.event .event-item p {
 	font-size: 13px;
 	line-height: 24px;
 	letter-spacing: 0.025em;
@@ -241,7 +248,7 @@ header .navbar-brand img {
 	margin-top: 30px;
 }
 
-.blog .entry  h3 {
+.blog .entry h3 {
 	margin-top: 20px;
 	margin-bottom: 5px;
 	font-size: 20px;
@@ -254,7 +261,7 @@ header .navbar-brand img {
 	color: #787878;
 }
 
-.blog .entry  p {
+.blog .entry p {
 	font-size: 13px;
 	line-height: 23px;
 }
@@ -322,7 +329,7 @@ header .navbar-brand img {
 	border-radius: 3px;
 }
 
-.team .member  h3 {
+.team .member h3 {
 	margin-top: 20px;
 	margin-bottom: 5px;
 	font-size: 22px;
@@ -361,8 +368,12 @@ header .navbar-brand img {
 	margin-bottom: 30px;
 	text-align: left;
 }
-.login-area form label ,
-.register-area form label { color: #fff; }
+
+.login-area form label,
+.register-area form label {
+	color: #fff;
+}
+
 .login-area form .form-control,
 .register-area form .form-control {
 	box-shadow: none !important;
@@ -371,11 +382,13 @@ header .navbar-brand img {
 	height: 45px;
 	font-size: 16px;
 }
+
 .login-area form .btn {
 	display: block;
 	width: 100%;
 	margin-top: 15px;
 }
+
 .register-area form .btn {
 	margin-top: 5px;
 }
@@ -389,22 +402,31 @@ footer {
 	padding: 50px 0;
 	background: #d65814;
 	text-align: center;
-	border-top: 1px solid rgba(0,0,0,0.1);
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
-footer.ffoot {margin-top: 0;}
+
+footer.ffoot {
+	margin-top: 0;
+}
+
 footer p {
 	font-size: 13px;
 	line-height: 25px;
 	color: #fff;
 }
-footer p a { 
+
+footer p a {
 	font-size: 13px;
 	line-height: 24px;
 	text-transform: uppercase;
 	letter-spacing: 0.055em;
 	color: #fff;
 }
-footer p a:hover { color: #a93c01; }
+
+footer p a:hover {
+	color: #a93c01;
+}
+
 footer .social a {
 	display: inline-block;
 	margin: 0 2px;
@@ -418,7 +440,7 @@ footer .social a {
 	border-radius: 50%;
 }
 
-footer .social a  i {
+footer .social a i {
 	display: block;
 	width: 100%;
 	height: 100%;
@@ -438,33 +460,48 @@ footer .copy-right {
 /*
  * Mobile phones 
  */
-@media (max-width: 480px){
-
-}
+@media (max-width: 480px) {}
 
 /*
  * Tablets 
  */
-@media (max-width: 767px){
-	header .navbar-brand img { max-width: 140px; top: 3px; }
-	header .navbar-nav .dropdown-menu:after, 
-	header .navbar-nav .dropdown-menu:before { display: none;}
-	header .navbar-nav .dropdown-menu li a { color: #fff !important;}
-	header .navbar-default .navbar-toggle .icon-bar {background: #fff;	}
-	header .navbar-collapse { border: 0; box-shadow: none; }
+@media (max-width: 767px) {
+	header .navbar-brand img {
+		max-width: 140px;
+		top: 3px;
+	}
+
+	header .navbar-nav .dropdown-menu:after,
+	header .navbar-nav .dropdown-menu:before {
+		display: none;
+	}
+
+	header .navbar-nav .dropdown-menu li a {
+		color: #fff !important;
+	}
+
+	header .navbar-default .navbar-toggle .icon-bar {
+		background: #fff;
+	}
+
+	header .navbar-collapse {
+		border: 0;
+		box-shadow: none;
+	}
+
 	header .navbar-default .navbar-toggle,
 	header .navbar-default .navbar-toggle:hover,
-	header .navbar-default .navbar-toggle:focus	{
+	header .navbar-default .navbar-toggle:focus {
 		background: transparent;
 		border-color: #fff;
 	}
-	
-	.default-heading {text-align: center;}
+
+	.default-heading {
+		text-align: center;
+	}
 }
 
 /*
  * Desktop 
  */
-@media (max-width: 991px){
-
-}
+@media (max-width: 991px) {}
