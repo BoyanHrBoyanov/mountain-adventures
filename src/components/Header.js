@@ -1,10 +1,11 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-export const Header = () => {
+import { AuthContext } from "../contexts/AuthContext";
+import { Logout } from "./Logout";
 
-	const handleLogout = () => {
-		sessionStorage.clear();
-}
+export const Header = () => {
+	const {user} = useContext(AuthContext);
 
     return (
         <header>
@@ -15,13 +16,14 @@ export const Header = () => {
 						</div> */}
 
 						<div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<span>{user?.username}</span>
 							<ul className="nav navbar-nav navbar-right">
 								<li><Link to="/">Home</Link></li>
-								<li><Link to="/register">Register</Link></li>
 								<li><Link to="/login">Login</Link></li>
+								<li><Link to="/register">Register</Link></li>
+								<li><Link to="/logout">Logout</Link></li>
 								<li><Link to="/create">Create</Link></li>
 								<li><Link to="/catalog">Catalog</Link></li>
-								<li><Link onClick={handleLogout} to="/">Logout</Link></li>
 							</ul>
 						</div>
 					</div>

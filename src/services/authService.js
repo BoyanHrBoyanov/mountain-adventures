@@ -1,20 +1,24 @@
-import { post  } from "../utils/api";
+import { get, post } from "../utils/api";
 
-export async function login(loginData) {
-    const data = await post('/users/login', loginData);
-    sessionStorage.setItem('user', createSessObj(data));
+export function login(loginData) {
+    return post('/users/login', loginData);
+    //sessionStorage.setItem('user', createSessObj(data));
 }
 
-export async function register(registerData) {
-    const data = await post('/users/register', registerData);
-    sessionStorage.setItem('user', createSessObj(data));
+export function register(registerData) {
+    return post('/users/register', registerData);
+    //sessionStorage.setItem('user', createSessObj(data));
 }
 
-const createSessObj = (data) => {
-    return JSON.stringify({
-        accessToken: data.accessToken,
-        email: data.email,
-        username: data.username,
-        _id: data._id
-    })
+export function logout() {
+    return get('/users/logout');
 }
+
+// const createSessObj = (data) => {
+//     return JSON.stringify({
+//         accessToken: data.accessToken,
+//         email: data.email,
+//         username: data.username,
+//         _id: data._id
+//     })
+// }

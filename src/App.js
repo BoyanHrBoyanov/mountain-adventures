@@ -3,12 +3,14 @@ import { Routes, Route } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
 import { get, post } from './utils/api';
+import { AuthProvider } from './contexts/AuthContext';
 
 import './App.css';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { Home } from './components/Home';
 import { Login } from './components/authComponents/Login';
+import { Logout } from './components/Logout';
 import { Register } from './components/authComponents/Register';
 import { Create } from './components/Create';
 import { Catalog } from './components/Catalog/Catalog';
@@ -48,19 +50,22 @@ function App() {
 	}, []);
 
 	return (
-		<div className="App">
-			<Header />
+		<AuthProvider>
+			<div className="App">
+				<Header />
 				<Routes>
 					<Route path='/' element={<Home stories={lastThree} loading={loading} />} />
 					<Route path='/login' element={<Login />} />
 					<Route path='/register' element={<Register />} />
+					<Route path='/logout' element={<Logout />} />
 					<Route path='/create' element={<Create getCreateObj={getCreateObj} />} />
 					<Route path='/catalog' element={<Catalog stories={stories} loading={loading} />} />
 					<Route path='/details/:storyId' element={<Details />} />
 				</Routes>
-			<Footer />
+				<Footer />
 
-		</div>
+			</div>
+		</AuthProvider>
 	);
 }
 

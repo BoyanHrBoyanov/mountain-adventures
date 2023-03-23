@@ -1,33 +1,14 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 
-import { login } from "../../services/authService";
+import { useForm } from "../../hooks/useForm";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export const Login = () => {
-
-	const navigate = useNavigate();
-
-	const [loginValues, setLoginValues] = useState({
+    const { onLogin } = useContext(AuthContext);
+	const { values, changeHandler, onSubmit } = useForm({
 		email: '',
 		password: ''
-	});
-
-	const onValueChange = (e) => {
-		setLoginValues(state => ({ ...state, [e.target.name]: e.target.value }));
-	};
-
-	const loginSubmit = async (e) => {
-		e.preventDefault();
-		await login(loginValues);
-		if (sessionStorage.getItem('to')) {
-			navigate(sessionStorage.getItem('to'));
-			sessionStorage.removeItem('to');
-		} else {
-			navigate("/");
-		}
-	};
-
-
+	}, onLogin);
 
 	return (
 		<div className="banner">
@@ -35,22 +16,22 @@ export const Login = () => {
 
 				<div className="register-area">
 					<h3>Login</h3>
-					<form onSubmit={loginSubmit}>
+					<form onSubmit={onSubmit}>
 						<div className="form-group">
 							<input type="text"
 								className="form-control"
 								name="email"
 								placeholder="Email"
-								value={loginValues.username}
-								onChange={onValueChange} />
+								value={values.email}
+								onChange={changeHandler} />
 						</div>
 						<div className="form-group">
 							<input type="password"
 								className="form-control"
 								name="password"
 								placeholder="Password"
-								value={loginValues.password}
-								onChange={onValueChange} />
+								value={values.password}
+								onChange={changeHandler} />
 						</div>
 						<button type="submit" className="btn btn-default">Login</button>
 					</form>
