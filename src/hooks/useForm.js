@@ -13,9 +13,16 @@ export const useForm = (initialValues, onSubmitHandler) => {
         setValues(initialValues);
     }
 
+    const changeValues = (newValues) => {
+        // TODO: Validate newValues shape (like initialValues)
+        
+        setValues(newValues);
+    };
+
     return {
         values,
         changeHandler,
-        onSubmit
+        onSubmit,
+        changeValues
     }
 };

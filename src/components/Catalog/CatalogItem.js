@@ -1,10 +1,13 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
+import { AuthContext } from "../../contexts/AuthContext";
 import styles from './CatalogItem.module.css';
 
 export const CatalogItem = ({
     story
 }) => {
+    const { user } = useContext(AuthContext);
 
     const formattedTime = new Date(story._createdOn).toLocaleString();
     return (
@@ -16,6 +19,7 @@ export const CatalogItem = ({
             </span>
             <p className={styles.p}>{story.description}</p>
             <div className="text-center">
+                {user && <Link to={`/edit/${story._id}`} className="btn btn-primary">Edit</Link>}
                 <Link to={`/details/${story._id}`} className="btn btn-default">See More</Link>
             </div>
         </div>

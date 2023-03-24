@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
-import { get, post } from './utils/api';
-import { AuthProvider } from './contexts/AuthContext';
+import { get, post, put } from './utils/api';
+import { paths } from './constants/paths';
 
 import './App.css';
+import { AuthProvider } from './contexts/AuthContext';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { Home } from './components/Home/Home';
@@ -15,7 +16,7 @@ import { Register } from './components/authComponents/Register';
 import { Create } from './components/Create';
 import { Catalog } from './components/Catalog/Catalog';
 import { Details } from './components/Details/Details';
-import { paths } from './constants/paths';
+import { Edit } from './components/Edit';
 
 function App() {
 	const navigate = useNavigate();
@@ -50,6 +51,15 @@ function App() {
 			});
 	}, []);
 
+	const editStory = async (values, storyId) => {
+		try {
+			const data = await put(paths.edit(storyId), values);
+			navigate(`/details/${storyId}`);
+		} catch (error) {
+			return window.alert(error);
+		}
+	}
+
 	return (
 		<AuthProvider>
 			<div className="App">
@@ -60,6 +70,7 @@ function App() {
 					<Route path='/register' element={<Register />} />
 					<Route path='/logout' element={<Logout />} />
 					<Route path='/create' element={<Create getCreateObj={getCreateObj} />} />
+					<Route path='/edit/:storyId' element={<Edit editStory={editStory}/>} />
 					<Route path='/catalog' element={<Catalog stories={stories} loading={loading} />} />
 					<Route path='/details/:storyId' element={<Details />} />
 				</Routes>

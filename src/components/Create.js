@@ -19,7 +19,6 @@ export const Create = ({
 		durType: '',
 		description: '',
 		imageUrl: '',
-
 	});
 
 	const onValueChange = (e) => {
