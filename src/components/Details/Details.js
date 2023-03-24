@@ -32,6 +32,8 @@ export const Details = () => {
         console.log(comment);
     };
 
+    const formattedTime = new Date(story._createdOn).toLocaleString();
+
     return loading
         ? (<LoadingSpinner />)
         : (<div className='row'>
@@ -75,7 +77,7 @@ export const Details = () => {
                         </tr>
                         <tr className={styles.odd}>
                             <td className={styles.key}>Posted on:</td>
-                            <td className={styles.value}>{story.createdOn}</td>
+                            <td className={styles.value}>{formattedTime}</td>
                         </tr>
                     </tbody>
                 </table>

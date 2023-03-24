@@ -52,7 +52,7 @@ export const AuthProvider = ({
         onLogin,
         onRegister,
         onLogout,
-        user
+        user: Object.keys(user).length === 0 ? null : user
     }
 
     return (

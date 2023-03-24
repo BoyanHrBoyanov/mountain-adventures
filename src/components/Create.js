@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { validateCreate } from "../utils/validateValues";
+
 export const Create = ({
 	getCreateObj
 }) => {
@@ -8,7 +10,7 @@ export const Create = ({
 	const navigate = useNavigate();
 	const [createValues, setCreateValues] = useState({
 		name: '',
-		type: 'bike',
+		type: 'Bike',
 		season: 'summer',
 		mountain: '',
 		denivelation: 0,
@@ -27,7 +29,9 @@ export const Create = ({
 	const createSubmit = (e) => {
 		e.preventDefault();
 		createValues["owner"] = JSON.parse(sessionStorage.getItem('user')).username;
-		getCreateObj(createValues);
+		const error = validateCreate(createValues);
+		console.log(createValues);
+		return error !== 'noError' ? window.alert(error) : getCreateObj(createValues);
 	}
 
 	useEffect(() => {

@@ -1,5 +1,5 @@
 .h1 {
-    margin-bottom: 5rem;
+    margin-bottom: 1rem;
 }
 
 .font {
@@ -15,4 +15,13 @@
 
 .trio {
     display: inline-flex;
+}
+
+.span {
+    font-size: x-large;
+}
+
+.user {
+    font-size: x-large;
+    color: #388639;
 }
