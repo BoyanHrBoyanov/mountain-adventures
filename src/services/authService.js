@@ -1,24 +1,14 @@
 import { get, post } from "../utils/api";
+import { paths } from "../constants/paths";
 
 export function login(loginData) {
-    return post('/users/login', loginData);
-    //sessionStorage.setItem('user', createSessObj(data));
+    return post(paths.login, loginData);
 }
 
 export function register(registerData) {
-    return post('/users/register', registerData);
-    //sessionStorage.setItem('user', createSessObj(data));
+    return post(paths.register, registerData);
 }
 
 export function logout() {
-    return get('/users/logout');
+    return get(paths.logout);
 }
-
-// const createSessObj = (data) => {
-//     return JSON.stringify({
-//         accessToken: data.accessToken,
-//         email: data.email,
-//         username: data.username,
-//         _id: data._id
-//     })
-// }

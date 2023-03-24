@@ -30,7 +30,6 @@ export const Create = ({
 		e.preventDefault();
 		createValues["owner"] = JSON.parse(sessionStorage.getItem('user')).username;
 		const error = validateCreate(createValues);
-		console.log(createValues);
 		return error !== 'noError' ? window.alert(error) : getCreateObj(createValues);
 	}
 

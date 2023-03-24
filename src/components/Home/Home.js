@@ -2,8 +2,8 @@ import { useContext } from "react";
 
 import { TopStory } from "./TopStory";
 import styles from './Home.module.css';
-import { LoadingSpinner } from "./LoadingSpinner/LoadingSpinner";
-import { AuthContext } from "../contexts/AuthContext";
+import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
+import { AuthContext } from "../../contexts/AuthContext";
 
 
 export const Home = ({

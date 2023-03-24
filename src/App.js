@@ -8,13 +8,14 @@ import { AuthProvider } from './contexts/AuthContext';
 import './App.css';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
-import { Home } from './components/Home';
+import { Home } from './components/Home/Home';
 import { Login } from './components/authComponents/Login';
-import { Logout } from './components/Logout';
+import { Logout } from './components/authComponents/Logout';
 import { Register } from './components/authComponents/Register';
 import { Create } from './components/Create';
 import { Catalog } from './components/Catalog/Catalog';
 import { Details } from './components/Details/Details';
+import { paths } from './constants/paths';
 
 function App() {
 	const navigate = useNavigate();
@@ -23,7 +24,7 @@ function App() {
 	const [loading, setLoading] = useState(true);
 
 	const getCreateObj = async (obj) => {
-		const data = await post('/data/adventures', obj);
+		const data = await post(paths.adventures, obj);
 		getLastThree(stories, data);
 		navigate('/');
 	}
@@ -39,7 +40,7 @@ function App() {
 	}
 
 	useEffect(() => {
-		get('/data/adventures')
+		get(paths.adventures)
 			.then(data => {
 				const arr = Array.from(Object.values(data));
 				getLastThree(arr);

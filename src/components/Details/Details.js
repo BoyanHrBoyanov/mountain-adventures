@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { get } from "../../utils/api";
+import { paths } from "../../constants/paths";
 import styles from './Details.module.css';
 
 
@@ -13,7 +14,7 @@ export const Details = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        get(`/data/adventures/${storyId}`)
+        get(paths.getById(storyId))
             .then(data => {
                 setStory(data);
             })
