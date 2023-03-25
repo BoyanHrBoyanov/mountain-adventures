@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
-import { get, post, put } from './utils/api';
+import { get, post, put, del } from './utils/api';
 import { paths } from './constants/paths';
 
 import './App.css';
@@ -31,9 +31,9 @@ function App() {
 	}
 
 	const getLastThree = (arr, obj) => {
-		if (obj) {
+		if (obj)
 			arr.push(obj);
-		}
+			
 		arr.sort((a, b) => b._createdOn - a._createdOn);
 		setStories(arr);
 		setLastThree(arr.slice(0, 3));
@@ -54,7 +54,19 @@ function App() {
 	const editStory = async (values, storyId) => {
 		try {
 			const data = await put(paths.edit(storyId), values);
+			getLastThree(stories.map(x => x._id === storyId ? data : x));
 			navigate(`/details/${storyId}`);
+		} catch (error) {
+			return window.alert(error);
+		}
+	}
+
+	const deleteStory = async (id) => {
+		try {
+			await del(paths.deleteStory(id));
+			const updated = JSON.parse(JSON.stringify(stories)).filter(story => story._id !== id);
+			getLastThree(updated);
+			navigate('/');
 		} catch (error) {
 			return window.alert(error);
 		}
@@ -70,7 +82,7 @@ function App() {
 					<Route path='/register' element={<Register />} />
 					<Route path='/logout' element={<Logout />} />
 					<Route path='/create' element={<Create getCreateObj={getCreateObj} />} />
-					<Route path='/edit/:storyId' element={<Edit editStory={editStory}/>} />
+					<Route path='/edit/:storyId' element={<Edit editStory={editStory} deleteStory={deleteStory}/>} />
 					<Route path='/catalog' element={<Catalog stories={stories} loading={loading} />} />
 					<Route path='/details/:storyId' element={<Details />} />
 				</Routes>

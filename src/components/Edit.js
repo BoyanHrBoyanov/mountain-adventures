@@ -1,28 +1,29 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { validateCreate } from "../utils/validateValues";
 import { paths } from "../constants/paths";
-import { get } from "../utils/api";
+import { get, del } from "../utils/api";
 import { useForm } from "../hooks/useForm";
 
 export const Edit = ({
-    editStory
+    editStory,
+    deleteStory
 }) => {
     const { storyId } = useParams();
     const [loading, setLoading] = useState(true);
 
     const { values, changeHandler, onSubmit, changeValues } = useForm({
         name: '',
-		type: 'Bike',
-		season: 'summer',
-		mountain: '',
-		denivelation: 0,
-		distance: 0,
-		duration: 0,
-		durType: '',
-		description: '',
-		imageUrl: '',
+        type: 'Bike',
+        season: 'summer',
+        mountain: '',
+        denivelation: 0,
+        distance: 0,
+        duration: 0,
+        durType: '',
+        description: '',
+        imageUrl: '',
     }, editSubmit)
 
     useEffect(() => {
@@ -45,12 +46,19 @@ export const Edit = ({
         editStory(values, storyId);
     }
 
+    function onDelete() {
+        const choice = window.confirm(`Are you sure you want to delete ${values.name}?`);
+        if (choice) {
+            deleteStory(storyId);
+        }
+    }
+
     return (
         <div className="banner">
             <div className="container">
                 <div className="register-area">
                     <h3>Edit Story</h3>
-                    <form onSubmit={onSubmit}>
+                    <form>
                         <div className="form-group row">
                             <div className="form-group col-sm-8">
                                 <label>Give it a Title</label>
@@ -162,8 +170,15 @@ export const Edit = ({
                                 onChange={changeHandler}>
                             </textarea>
                         </div>
-                        <button type="submit" className="btn btn-default">Edit</button>
                     </form>
+                    <div className="form-group row">
+                        <div className="form-group col-sm-6">
+                            <button onClick={onSubmit} className="btn btn-default">Edit</button>
+                        </div>
+                        <div className="form-group col-sm-6">
+                            <button onClick={onDelete} type="button" className="btn btn-danger">Delete</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

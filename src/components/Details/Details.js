@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import { useParams, Link } from "react-router-dom";
 
+import { AuthContext } from "../../contexts/AuthContext";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { get } from "../../utils/api";
 import { paths } from "../../constants/paths";
@@ -9,6 +10,7 @@ import styles from './Details.module.css';
 
 export const Details = () => {
     const { storyId } = useParams();
+    const { user } = useContext(AuthContext);
     const [story, setStory] = useState({});
     const [comment, setComment] = useState('');
     const [loading, setLoading] = useState(true);
@@ -82,6 +84,7 @@ export const Details = () => {
                         </tr>
                     </tbody>
                 </table>
+                {story._ownerId === user?._id && <Link to={`/edit/${story._id}`} className="btn btn-primary">Edit</Link>}
             </div>
             <div className="col-sm-8">
                 <div className="row">
