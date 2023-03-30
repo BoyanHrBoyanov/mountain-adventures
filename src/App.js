@@ -21,40 +21,38 @@ import { Edit } from './components/Edit';
 function App() {
 	const navigate = useNavigate();
 	const [stories, setStories] = useState([]);
-	const [lastThree, setLastThree] = useState([]);
 	const [loading, setLoading] = useState(true);
 
 	const getCreateObj = async (obj) => {
-		const data = await post(paths.adventures, obj);
-		getLastThree(stories, data);
-		navigate('/');
+		setLoading(true);
+		try {
+			const data = await post(paths.adventures, obj);
+			setStories(state => [...state, data]);
+		} catch (error) {
+			console.log(error);
+		}
+		setLoading(false);
+		navigate('/catalog');
 	}
 
-	const getLastThree = (arr, obj) => {
-		if (obj)
-			arr.push(obj);
-			
-		arr.sort((a, b) => b._createdOn - a._createdOn);
-		setStories(arr);
-		setLastThree(arr.slice(0, 3));
-		setLoading(false);
-	}
 
 	useEffect(() => {
+		setLoading(true);
 		get(paths.adventures)
 			.then(data => {
 				const arr = Array.from(Object.values(data));
-				getLastThree(arr);
+				setStories(arr);
 			})
 			.catch(err => {
 				console.log(err);
 			});
+			setLoading(false);
 	}, []);
 
 	const editStory = async (values, storyId) => {
 		try {
 			const data = await put(paths.edit(storyId), values);
-			getLastThree(stories.map(x => x._id === storyId ? data : x));
+			setStories(state => state.map(x => x._id === storyId ? data : x));
 			navigate(`/details/${storyId}`);
 		} catch (error) {
 			return window.alert(error);
@@ -65,8 +63,8 @@ function App() {
 		try {
 			await del(paths.deleteStory(id));
 			const updated = JSON.parse(JSON.stringify(stories)).filter(story => story._id !== id);
-			getLastThree(updated);
-			navigate('/');
+			setStories(state => state.filter(x => x._id !== id));
+			navigate('/catalog');
 		} catch (error) {
 			return window.alert(error);
 		}
@@ -77,7 +75,7 @@ function App() {
 			<div className="App">
 				<Header />
 				<Routes>
-					<Route path='/' element={<Home stories={lastThree} loading={loading} />} />
+					<Route path='/' element={<Home />} />
 					<Route path='/login' element={<Login />} />
 					<Route path='/register' element={<Register />} />
 					<Route path='/logout' element={<Logout />} />
