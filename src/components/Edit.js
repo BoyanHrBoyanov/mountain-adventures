@@ -11,7 +11,6 @@ export const Edit = ({
     deleteStory
 }) => {
     const { storyId } = useParams();
-    const [loading, setLoading] = useState(true);
 
     const { values, changeHandler, onSubmit, changeValues } = useForm({
         name: '',
@@ -34,7 +33,6 @@ export const Edit = ({
             .catch(error => {
                 console.log(error);
             });
-        setLoading(false);
     }, [storyId]);
 
 
