@@ -17,6 +17,7 @@ import { Create } from './components/Create';
 import { Catalog } from './components/Catalog/Catalog';
 import { Details } from './components/Details/Details';
 import { Edit } from './components/Edit';
+import { Profile } from './components/Profile/Profile';
 
 function App() {
 	const navigate = useNavigate();
@@ -88,6 +89,7 @@ function App() {
 					<Route path='/edit/:storyId' element={<Edit editStory={editStory} deleteStory={deleteStory}/>} />
 					<Route path='/catalog' element={<Catalog stories={stories} loading={loading} />} />
 					<Route path='/details/:storyId' element={<Details />} />
+					<Route path='/profile' element={<Profile stories={stories} loading={loading} />} />
 				</Routes>
 				<Footer />
 

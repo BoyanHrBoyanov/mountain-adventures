@@ -21,6 +21,7 @@ export const Header = () => {
 							{user && (
 								<>
 									<li><Link to="/create">Create</Link></li>
+									<li><Link to="/profile">Profile</Link></li>
 									<li><Link to="/logout">Logout</Link></li>
 								</>
 							)}
