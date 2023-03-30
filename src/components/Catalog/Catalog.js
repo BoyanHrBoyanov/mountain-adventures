@@ -7,7 +7,6 @@ export const Catalog = ({
     stories,
     loading
 }) => {
-    stories.sort((a, b) => b._createdOn - a._createdOn);
 
     return (
         <div className="blog" id="blog">

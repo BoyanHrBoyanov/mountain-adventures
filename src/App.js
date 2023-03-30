@@ -21,13 +21,16 @@ import { Edit } from './components/Edit';
 function App() {
 	const navigate = useNavigate();
 	const [stories, setStories] = useState([]);
+	const [lastThree, setLastThree] = useState([]);
 	const [loading, setLoading] = useState(true);
 
 	const getCreateObj = async (obj) => {
 		setLoading(true);
 		try {
 			const data = await post(paths.adventures, obj);
-			setStories(state => [...state, data]);
+			setStories(state => [data, ...state]);
+			setLastThree([data, ...lastThree].pop());
+
 		} catch (error) {
 			console.log(error);
 		}
@@ -35,6 +38,9 @@ function App() {
 		navigate('/catalog');
 	}
 
+	useEffect(() => {
+		setLastThree(stories.slice(0, 3));
+	}, [stories])
 
 	useEffect(() => {
 		setLoading(true);
@@ -62,7 +68,6 @@ function App() {
 	const deleteStory = async (id) => {
 		try {
 			await del(paths.deleteStory(id));
-			const updated = JSON.parse(JSON.stringify(stories)).filter(story => story._id !== id);
 			setStories(state => state.filter(x => x._id !== id));
 			navigate('/catalog');
 		} catch (error) {
@@ -75,7 +80,7 @@ function App() {
 			<div className="App">
 				<Header />
 				<Routes>
-					<Route path='/' element={<Home />} />
+					<Route path='/' element={<Home stories={lastThree} loading={loading} />} />
 					<Route path='/login' element={<Login />} />
 					<Route path='/register' element={<Register />} />
 					<Route path='/logout' element={<Logout />} />

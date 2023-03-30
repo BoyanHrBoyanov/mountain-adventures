@@ -1,7 +1,7 @@
 
 
 export const paths = {
-    adventures: '/data/adventures',
+    adventures: '/data/adventures?sortBy=_createdOn%20desc',
     getById: (id) => `/data/adventures/${id}`,
     edit: (id) => `/data/adventures/${id}`,
     deleteStory: (id) => `/data/adventures/${id}`,
