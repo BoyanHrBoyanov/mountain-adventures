@@ -7,7 +7,7 @@ import { paths } from './constants/paths';
 
 import './App.css';
 import { AuthProvider } from './contexts/AuthContext';
-import {ErrorPage} from './components/404/ErrorPage';
+import {ErrorPage} from './components/toolComponents/ErrorPage';
 import { Footer } from './components/smallComponents/Footer';
 import { Header } from './components/smallComponents/Header';
 import { Home } from './components/Home/Home';
@@ -87,10 +87,11 @@ function App() {
 					<Route path='/register' element={<Register />} />
 					<Route path='/logout' element={<Logout />} />
 					<Route path='/create' element={<Create getCreateObj={getCreateObj} />} />
-					<Route path='/edit/:storyId' element={<Edit editStory={editStory} deleteStory={deleteStory}/>} />
+	/* guarded */	<Route path='/edit/:storyId' element={<Edit editStory={editStory} deleteStory={deleteStory}/>} />
 					<Route path='/catalog' element={<Catalog stories={stories} loading={loading} />} />
 					<Route path='/details/:storyId' element={<Details />} />
 					<Route path='/profile' element={<Profile stories={stories} loading={loading} />} />
+					<Route path='/404' element={<ErrorPage />} />
 					<Route path='*' element={<ErrorPage />} />
 				</Routes>
 				<Footer />

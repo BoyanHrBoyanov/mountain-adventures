@@ -1,15 +1,19 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 import { validateCreate } from "../../utils/validateValues";
 import { paths } from "../../constants/paths";
 import { get } from "../../utils/api";
 import { useForm } from "../../hooks/useForm";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export const Edit = ({
     editStory,
     deleteStory
 }) => {
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+
     const { storyId } = useParams();
 
     const { values, changeHandler, onSubmit, changeValues } = useForm({
@@ -28,12 +32,14 @@ export const Edit = ({
     useEffect(() => {
         get(paths.getById(storyId))
             .then(data => {
+                if (user._id !== data._ownerId)
+                    navigate('/404');
                 changeValues(data);
             })
             .catch(error => {
                 console.log(error);
             });
-    }, [storyId]);
+    }, [storyId, user._id, navigate]);
 
 
     function editSubmit() {

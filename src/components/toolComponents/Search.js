@@ -12,7 +12,7 @@ export const Search = ({
         <div className={`${styles.subscribe} subscribe`} id="subscribe">
             <div className="container">
                 <div className="sub-content">
-                        <div className="input-group">
+                        <div>
                             <input 
                                 onInput={onSearch} 
                                 value={search} 
