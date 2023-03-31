@@ -38,8 +38,10 @@
 }
 
 .description {
+    width: 60em;
     margin-left: 2em;
     color: black;
+    font-weight: 900;
 }
 
 .commentForm {
