@@ -7,16 +7,16 @@ import { paths } from './constants/paths';
 
 import './App.css';
 import { AuthProvider } from './contexts/AuthContext';
-import { Footer } from './components/Footer';
-import { Header } from './components/Header';
+import { Footer } from './components/Footer/Footer';
+import { Header } from './components/Header/Header';
 import { Home } from './components/Home/Home';
 import { Login } from './components/authComponents/Login';
 import { Logout } from './components/authComponents/Logout';
 import { Register } from './components/authComponents/Register';
-import { Create } from './components/Create';
+import { Create } from './components/Create/Create';
 import { Catalog } from './components/Catalog/Catalog';
 import { Details } from './components/Details/Details';
-import { Edit } from './components/Edit';
+import { Edit } from './components/Edit/Edit';
 import { Profile } from './components/Profile/Profile';
 
 function App() {

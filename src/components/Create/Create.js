@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { validateCreate } from "../utils/validateValues";
+import { validateCreate } from "../../utils/validateValues";
 
 export const Create = ({
 	getCreateObj

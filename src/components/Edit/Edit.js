@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { validateCreate } from "../utils/validateValues";
-import { paths } from "../constants/paths";
-import { get, del } from "../utils/api";
-import { useForm } from "../hooks/useForm";
+import { validateCreate } from "../../utils/validateValues";
+import { paths } from "../../constants/paths";
+import { get, del } from "../../utils/api";
+import { useForm } from "../../hooks/useForm";
 
 export const Edit = ({
     editStory,
