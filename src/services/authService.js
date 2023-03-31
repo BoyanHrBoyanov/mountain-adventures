@@ -6,6 +6,9 @@ export function login(loginData) {
 }
 
 export function register(registerData) {
+    if (registerData.password !== registerData.repass) {
+        throw new Error('Password missmatch!')
+    }
     return post(paths.register, registerData);
 }
 

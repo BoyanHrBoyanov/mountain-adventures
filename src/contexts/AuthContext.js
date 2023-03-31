@@ -20,9 +20,13 @@ export const AuthProvider = ({
     };
 
     const onRegister = async (data) => {
-        const responseData = await register(data);
-        setUser(JSON.parse(createSessObj(responseData)));
-        navigateFunc();
+        try {
+            const responseData = await register(data);
+            setUser(JSON.parse(createSessObj(responseData)));
+            navigateFunc();
+        } catch (error) {
+            window.alert(error);
+        }
     };
 
     const onLogout = async () => {
