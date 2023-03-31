@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styles from './Search.module.css'
 
 export const Search = ({

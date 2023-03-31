@@ -1,9 +1,10 @@
 import { useContext } from "react";
 
-import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
+import { LoadingSpinner } from "../toolComponents/LoadingSpinner";
 import {TopStory} from "./TopStory";
 import styles from './Home.module.css';
 import { AuthContext } from "../../contexts/AuthContext";
+import { NoPosts } from "../toolComponents/NoPosts";
 
 
 export const Home = ({
@@ -28,7 +29,11 @@ export const Home = ({
 				{loading
 					? (<LoadingSpinner />)
 					: (<div className={styles.trio}>
-						{stories.map(s => <TopStory key={s._id} story={s} />)}
+						{
+							stories.length 
+							? stories.map(s => <TopStory key={s._id} story={s} />)
+							: <NoPosts />
+						}
 					</div>)}
 
 			</div>
