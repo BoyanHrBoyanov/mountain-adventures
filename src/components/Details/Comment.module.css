@@ -1,0 +1,17 @@
+.comment {
+    border: 1px solid black;
+    border-radius: 15px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 1em;
+    background-color: cornflowerblue;
+    font-size: 1.1em;
+    color: black;
+    width: 30em;
+}
+
+.time {
+    display: flex;
+    flex-direction: row-reverse;
+    color: aliceblue;
+}

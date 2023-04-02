@@ -7,5 +7,6 @@ export const paths = {
     deleteStory: (id) => `/data/adventures/${id}`,
     login: '/users/login',
     register: '/users/register',
-    logout: '/users/logout'
+    logout: '/users/logout',
+    
 }

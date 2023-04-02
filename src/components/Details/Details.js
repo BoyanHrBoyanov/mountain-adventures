@@ -3,9 +3,10 @@ import { useParams, Link } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/AuthContext";
 import { LoadingSpinner } from "../toolComponents/LoadingSpinner";
-import { get } from "../../utils/api";
+import { get, post } from "../../utils/api";
 import { paths } from "../../constants/paths";
 import styles from './Details.module.css';
+import { Comment } from "./Comment";
 
 
 export const Details = () => {
@@ -13,6 +14,7 @@ export const Details = () => {
     const { user } = useContext(AuthContext);
     const [story, setStory] = useState({});
     const [comment, setComment] = useState('');
+    const [comments, setComments] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -26,13 +28,31 @@ export const Details = () => {
         setLoading(false);
     }, [storyId]);
 
+    useEffect(() => {
+        get(`/data/comments?where=storyId%3D%22${storyId}%22`)
+            .then(data => {
+                console.log(data);
+                setComments(data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }, [storyId])
+
     const OnChangeHandler = (e) => {
         setComment(e.target.value);
     };
 
-    const sendComment = (e) => {
+    const sendComment = async (e) => {
         e.preventDefault();
-        console.log(comment);
+
+        try {
+            const data = await post(`/data/comments`, { storyId, comment, username: user.username });
+            setComments(state => ([...state, data]));
+            setComment('');
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const formattedTime = new Date(story._createdOn).toLocaleString();
@@ -93,10 +113,24 @@ export const Details = () => {
                 </div>
                 <div className="row">
                     <h4>Comments:</h4>
+
                     <form onSubmit={sendComment} className={styles.commentForm}>
-                        <textarea value={comment} onChange={OnChangeHandler} name="comments" cols="60" rows="3"></textarea>
+                        <textarea
+                            value={comment}
+                            onChange={OnChangeHandler}
+                            placeholder="Type here..."
+                            name="comments"
+                            cols="60"
+                            rows="3">
+                        </textarea>
                         <button type="submit" className="btn btn-default">Send</button>
                     </form>
+
+                    {comments.length
+                        ? (<div className={styles.comments}>
+                            {comments.map(c => <Comment key={c._id} comment={c} />)}
+                        </div>)
+                        : <h4>No comments yet...</h4>}
                 </div>
             </div>
         </div>)
