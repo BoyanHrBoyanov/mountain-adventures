@@ -8,5 +8,6 @@ export const paths = {
     login: '/users/login',
     register: '/users/register',
     logout: '/users/logout',
+    delComment: (id) => `/data/comments/${id}`,
     
 }

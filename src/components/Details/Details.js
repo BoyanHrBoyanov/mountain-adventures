@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/AuthContext";
 import { LoadingSpinner } from "../toolComponents/LoadingSpinner";
-import { get, post, put } from "../../utils/api";
+import { del, get, post, put } from "../../utils/api";
 import { paths } from "../../constants/paths";
 import styles from './Details.module.css';
 import { Comment } from "./Comment";
@@ -59,6 +59,15 @@ export const Details = () => {
     const editComment = (comment) => {
         setComment(comment.comment);
         setCommentId(comment._id)
+    }
+
+    const deleteComment = async (comment) => {
+        try {
+            await del(paths.delComment(comment._id));
+            setComments(state => state.filter(c => c._id !== comment._id));
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const sendEditComment = async () => {
@@ -154,7 +163,8 @@ export const Details = () => {
                                 <Comment
                                     key={c._id}
                                     comment={c}
-                                    editComment={editComment}/>)}
+                                    editComment={editComment}
+                                    deleteComment={deleteComment}/>)}
                         </div>)
                         : <h4>No comments yet...</h4>}
                 </div>
