@@ -44,11 +44,13 @@ async function request(method, url, data) {
 let get = request.bind(null, 'get');
 let put = request.bind(null, 'put');
 let post = request.bind(null, 'post');
+let patch = request.bind(null, 'patch');
 let del = request.bind(null, 'delete');
 
 export {
     get,
     put,
     post,
+    patch,
     del
 }

@@ -177,7 +177,7 @@ export const Edit = ({
                     </form>
                     <div className="form-group row">
                         <div className="form-group col-sm-6">
-                            <button onClick={onSubmit} className="btn btn-default">Edit</button>
+                            <button onClick={onSubmit} className="btn btn-default">Save</button>
                         </div>
                         <div className="form-group col-sm-6">
                             <button onClick={onDelete} type="button" className="btn btn-danger">Delete</button>

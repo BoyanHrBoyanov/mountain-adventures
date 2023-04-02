@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/AuthContext";
 import { LoadingSpinner } from "../toolComponents/LoadingSpinner";
-import { get, post } from "../../utils/api";
+import { get, post, put } from "../../utils/api";
 import { paths } from "../../constants/paths";
 import styles from './Details.module.css';
 import { Comment } from "./Comment";
@@ -15,6 +15,7 @@ export const Details = () => {
     const [story, setStory] = useState({});
     const [comment, setComment] = useState('');
     const [comments, setComments] = useState([]);
+    const [commentId, setCommentId] = useState('');
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -31,7 +32,6 @@ export const Details = () => {
     useEffect(() => {
         get(`/data/comments?where=storyId%3D%22${storyId}%22`)
             .then(data => {
-                console.log(data);
                 setComments(data);
             })
             .catch(error => {
@@ -39,13 +39,14 @@ export const Details = () => {
             })
     }, [storyId])
 
-    const OnChangeHandler = (e) => {
+    const onChangeHandler = (e) => {
         setComment(e.target.value);
     };
 
     const sendComment = async (e) => {
         e.preventDefault();
-
+        if (commentId)
+            return sendEditComment();
         try {
             const data = await post(`/data/comments`, { storyId, comment, username: user.username });
             setComments(state => ([...state, data]));
@@ -54,6 +55,24 @@ export const Details = () => {
             console.log(error);
         }
     };
+
+    const editComment = (comment) => {
+        setComment(comment.comment);
+        setCommentId(comment._id)
+    }
+
+    const sendEditComment = async () => {
+        try {
+            await put(`/data/comments/${commentId}`, { comment, storyId, username: user.username });
+            setComments(state => ([...state].map(com => com._id === commentId 
+                    ? ({...com, comment}) 
+                    : com)));
+        } catch (error) {
+            console.log(error);
+        }
+        setComment('');
+        setCommentId('');
+    }
 
     const formattedTime = new Date(story._createdOn).toLocaleString();
 
@@ -117,18 +136,25 @@ export const Details = () => {
                     <form onSubmit={sendComment} className={styles.commentForm}>
                         <textarea
                             value={comment}
-                            onChange={OnChangeHandler}
-                            placeholder="Type here..."
+                            onChange={onChangeHandler}
+                            placeholder={user ? "Type here..." : "Only logged in users can post comments"}
                             name="comments"
                             cols="60"
                             rows="3">
                         </textarea>
-                        <button type="submit" className="btn btn-default">Send</button>
+                        {user
+                        ? <button type="submit" className="btn btn-default" >Send</button>
+                        : <button type="submit" className="btn btn-default" disabled >Send</button>
+                    }
                     </form>
 
                     {comments.length
                         ? (<div className={styles.comments}>
-                            {comments.map(c => <Comment key={c._id} comment={c} />)}
+                            {comments.map(c =>
+                                <Comment
+                                    key={c._id}
+                                    comment={c}
+                                    editComment={editComment}/>)}
                         </div>)
                         : <h4>No comments yet...</h4>}
                 </div>
