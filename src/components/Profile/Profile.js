@@ -24,7 +24,7 @@ export const Profile = ({
                 <div className="default-heading">
                     <h2>{user.username}'s Stories</h2>
                 </div>
-                {stories.length 
+                {ownStories.length 
                     ? <Search setSearch={setSearch} search={search} /> 
                     : null}
                 <div className={styles.div}>

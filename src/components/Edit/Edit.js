@@ -32,14 +32,14 @@ export const Edit = ({
     useEffect(() => {
         get(paths.getById(storyId))
             .then(data => {
-                if (user._id !== data._ownerId)
+                if (user?._id !== data._ownerId || !user)
                     navigate('/404');
                     setValues(data);
             })
             .catch(error => {
                 console.log(error);
             });
-    }, [storyId, user._id, navigate, setValues]);
+    }, [storyId, user, navigate, setValues]);
 
 
     function editSubmit() {
