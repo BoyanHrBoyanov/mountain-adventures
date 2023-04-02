@@ -16,7 +16,7 @@ export const Edit = ({
 
     const { storyId } = useParams();
 
-    const { values, changeHandler, onSubmit, changeValues } = useForm({
+    const { values, changeHandler, onSubmit, setValues } = useForm({
         name: '',
         type: 'Bike',
         season: 'summer',
@@ -34,12 +34,12 @@ export const Edit = ({
             .then(data => {
                 if (user._id !== data._ownerId)
                     navigate('/404');
-                changeValues(data);
+                    setValues(data);
             })
             .catch(error => {
                 console.log(error);
             });
-    }, [storyId, user._id, navigate]);
+    }, [storyId, user._id, navigate, setValues]);
 
 
     function editSubmit() {
