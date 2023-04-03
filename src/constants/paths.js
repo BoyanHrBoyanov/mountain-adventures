@@ -8,6 +8,9 @@ export const paths = {
     login: '/users/login',
     register: '/users/register',
     logout: '/users/logout',
+    getComments: (storyId) => `/data/comments?where=storyId%3D%22${storyId}%22`,
+    postComment: '/data/comments',
     delComment: (id) => `/data/comments/${id}`,
+    editComment: (id) => `/data/comments/${id}`,
     
 }

@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { LoadingSpinner } from "../toolComponents/LoadingSpinner";
 import { CatalogItem } from "../Catalog/CatalogItem";
@@ -13,7 +14,11 @@ export const Profile = ({
     loading
 }) => {
     const { user } = useContext(AuthContext);
-    const ownStories = stories.filter(s => s._ownerId === user._id);
+    const navigate = useNavigate();
+    if (!user) {
+        navigate('/404');
+    }
+    const ownStories = stories.filter(s => s._ownerId === user?._id);
 
     const [search, setSearch] = useState('');
     const resultStories = ownStories.filter(s => s.name.toLowerCase().includes(search.toLowerCase()));
@@ -22,7 +27,7 @@ export const Profile = ({
         <div className="blog" id="blog">
             <div className="container">
                 <div className="default-heading">
-                    <h2>{user.username}'s Stories</h2>
+                    <h2>{user?.username}'s Stories</h2>
                 </div>
                 {ownStories.length 
                     ? <Search setSearch={setSearch} search={search} /> 

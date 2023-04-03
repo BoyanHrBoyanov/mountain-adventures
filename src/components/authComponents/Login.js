@@ -1,14 +1,20 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useForm } from "../../hooks/useForm";
 import { AuthContext } from "../../contexts/AuthContext";
 
 export const Login = () => {
-    const { onLogin } = useContext(AuthContext);
+    const { onLogin, user } = useContext(AuthContext);
 	const { values, changeHandler, onSubmit } = useForm({
 		email: '',
 		password: ''
 	}, onLogin);
+	const navigate = useNavigate();
+
+	if (user) {
+		navigate('/404');
+	}
 
 	return (
 		<div className="banner">

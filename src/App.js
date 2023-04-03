@@ -87,7 +87,7 @@ function App() {
 					<Route path='/register' element={<Register />} />
 					<Route path='/logout' element={<Logout />} />
 					<Route path='/create' element={<Create getCreateObj={getCreateObj} />} />
-	/* guarded */	<Route path='/edit/:storyId' element={<Edit editStory={editStory} deleteStory={deleteStory}/>} />
+					<Route path='/edit/:storyId' element={<Edit editStory={editStory} deleteStory={deleteStory}/>} />
 					<Route path='/catalog' element={<Catalog stories={stories} loading={loading} />} />
 					<Route path='/details/:storyId' element={<Details />} />
 					<Route path='/profile' element={<Profile stories={stories} loading={loading} />} />

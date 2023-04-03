@@ -30,13 +30,13 @@ export const Details = () => {
     }, [storyId]);
 
     useEffect(() => {
-        get(`/data/comments?where=storyId%3D%22${storyId}%22`)
+        get(paths.getComments(storyId))
             .then(data => {
                 setComments(data);
             })
             .catch(error => {
                 console.log(error);
-            })
+            });
     }, [storyId])
 
     const onChangeHandler = (e) => {
@@ -48,13 +48,26 @@ export const Details = () => {
         if (commentId)
             return sendEditComment();
         try {
-            const data = await post(`/data/comments`, { storyId, comment, username: user.username });
+            const data = await post(paths.postComment, { storyId, comment, username: user.username });
             setComments(state => ([...state, data]));
             setComment('');
         } catch (error) {
             console.log(error);
         }
     };
+
+    const sendEditComment = async () => {
+        try {
+            await put(paths.editComment(commentId), { comment, storyId, username: user.username });
+            setComments(state => ([...state].map(com => com._id === commentId 
+                    ? ({...com, comment}) 
+                    : com)));
+        } catch (error) {
+            console.log(error);
+        }
+        setComment('');
+        setCommentId('');
+    }
 
     const editComment = (comment) => {
         setComment(comment.comment);
@@ -70,18 +83,6 @@ export const Details = () => {
         }
     }
 
-    const sendEditComment = async () => {
-        try {
-            await put(`/data/comments/${commentId}`, { comment, storyId, username: user.username });
-            setComments(state => ([...state].map(com => com._id === commentId 
-                    ? ({...com, comment}) 
-                    : com)));
-        } catch (error) {
-            console.log(error);
-        }
-        setComment('');
-        setCommentId('');
-    }
 
     const formattedTime = new Date(story._createdOn).toLocaleString();
 
