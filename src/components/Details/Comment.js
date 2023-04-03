@@ -8,7 +8,7 @@ export const Comment = ({
     editComment,
     deleteComment
 }) => {
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const formattedTime = new Date(comment._createdOn).toLocaleString();
 
     const confirmDelete = () => {
@@ -20,14 +20,14 @@ export const Comment = ({
     return (
         <>
             <div className={styles.comment}>
-            {user._id=== comment._ownerId && 
-                <button onClick={confirmDelete} className={styles.deleteBtn}>X</button>
-            }
+                {user._id === comment._ownerId &&
+                    <button onClick={confirmDelete} className={styles.deleteBtn}>X</button>
+                }
                 {comment.username}: {comment.comment}
-            <p className={styles.time}>{formattedTime}</p>
-            {user._id === comment._ownerId &&
-                <button onClick={() => editComment(comment)} className={styles.editBtn}>Edit</button>
-            }
+                <p className={styles.time}>{formattedTime}</p>
+                {user._id === comment._ownerId &&
+                    <button onClick={() => editComment(comment)} className={styles.editBtn}>Edit</button>
+                }
             </div>
         </>
     );

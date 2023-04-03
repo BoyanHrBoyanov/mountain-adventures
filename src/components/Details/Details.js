@@ -3,10 +3,11 @@ import { useParams, Link } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/AuthContext";
 import { LoadingSpinner } from "../toolComponents/LoadingSpinner";
+import { Comment } from "./Comment";
+
 import { del, get, post, put } from "../../utils/api";
 import { paths } from "../../constants/paths";
 import styles from './Details.module.css';
-import { Comment } from "./Comment";
 
 
 export const Details = () => {
