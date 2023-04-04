@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { LoadingSpinner } from "../toolComponents/LoadingSpinner";
+import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { CatalogItem } from "../Catalog/CatalogItem";
 import { AuthContext } from "../../contexts/AuthContext";
 
 import styles from '../Catalog/Catalog.module.css';
-import { Search } from "../toolComponents/Search";
-import { NoPosts } from "../toolComponents/NoPosts";
+import { Search } from "../Search/Search";
+import { NoPosts } from "../NoPosts/NoPosts";
 
 export const Profile = ({
     stories,

@@ -7,9 +7,9 @@ import { paths } from './constants/paths';
 
 import './App.css';
 import { AuthProvider } from './contexts/AuthContext';
-import {ErrorPage} from './components/toolComponents/ErrorPage';
-import { Footer } from './components/smallComponents/Footer';
-import { Header } from './components/smallComponents/Header';
+import {ErrorPage} from './components/404/ErrorPage';
+import { Footer } from './components/Footer/Footer';
+import { Header } from './components/Header/Header';
 import { Home } from './components/Home/Home';
 import { Login } from './components/authComponents/Login';
 import { Logout } from './components/authComponents/Logout';

@@ -1,10 +1,10 @@
 import { useContext } from "react";
 
-import { LoadingSpinner } from "../toolComponents/LoadingSpinner";
+import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import {TopStory} from "./TopStory";
 import styles from './Home.module.css';
 import { AuthContext } from "../../contexts/AuthContext";
-import { NoPosts } from "../toolComponents/NoPosts";
+import { NoPosts } from "../NoPosts/NoPosts";
 
 
 export const Home = ({

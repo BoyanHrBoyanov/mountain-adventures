@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 import { CatalogItem } from "./CatalogItem";
-import { LoadingSpinner } from "../toolComponents/LoadingSpinner";
+import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import styles from './Catalog.module.css';
-import { Search } from "../toolComponents/Search";
-import { NoPosts } from "../toolComponents/NoPosts";
+import { Search } from "../Search/Search";
+import { NoPosts } from "../NoPosts/NoPosts";
 
 
 export const Catalog = ({

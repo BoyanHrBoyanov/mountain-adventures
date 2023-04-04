@@ -20,12 +20,12 @@ export const Comment = ({
     return (
         <>
             <div className={styles.comment}>
-                {user._id === comment._ownerId &&
+                {user?._id === comment._ownerId &&
                     <button onClick={confirmDelete} className={styles.deleteBtn}>X</button>
                 }
                 {comment.username}: {comment.comment}
                 <p className={styles.time}>{formattedTime}</p>
-                {user._id === comment._ownerId &&
+                {user?._id === comment._ownerId &&
                     <button onClick={() => editComment(comment)} className={styles.editBtn}>Edit</button>
                 }
             </div>

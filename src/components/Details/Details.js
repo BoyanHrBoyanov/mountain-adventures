@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/AuthContext";
-import { LoadingSpinner } from "../toolComponents/LoadingSpinner";
+import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import { Comment } from "./Comment";
 
 import { del, get, post, put } from "../../utils/api";
