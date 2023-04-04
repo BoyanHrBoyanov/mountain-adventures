@@ -20,7 +20,7 @@ export const CatalogItem = ({
             <p className={styles.p}>{story.description}</p>
             <div className="text-center">
                 {story._ownerId === user?._id && <Link to={`/edit/${story._id}`} className="btn btn-primary">Edit</Link>}
-                <Link to={`/details/${story._id}`} className="btn btn-default">See More</Link>
+                <Link to={`/details/${story._id}`} className="btn btn-default">See more</Link>
             </div>
         </div>
     );

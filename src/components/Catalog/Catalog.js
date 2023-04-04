@@ -21,7 +21,7 @@ export const Catalog = ({
                     <h2>Catalog</h2>
                 </div>
                 {
-                    resultStories.length 
+                    stories.length 
                     ? <Search setSearch={setSearch} search={search} />
                     : null
                     }
