@@ -46,6 +46,8 @@ export const Details = () => {
 
     const sendComment = async (e) => {
         e.preventDefault();
+        if (comment === '')
+            return
         if (commentId)
             return sendEditComment();
         try {
@@ -56,6 +58,11 @@ export const Details = () => {
             console.log(error);
         }
     };
+
+    const listenForEnter = (e) => {
+        if (e.key === 'Enter')
+            sendComment(e);
+    }
 
     const sendEditComment = async () => {
         try {
@@ -144,7 +151,7 @@ export const Details = () => {
                 <div className="row">
                     <h4>Comments:</h4>
 
-                    <form onSubmit={sendComment} className={styles.commentForm}>
+                    <form onSubmit={sendComment} onKeyDown={listenForEnter} className={styles.commentForm}>
                         <textarea
                             value={comment}
                             onChange={onChangeHandler}
@@ -155,7 +162,7 @@ export const Details = () => {
                         </textarea>
                         {user
                         ? <button type="submit" className="btn btn-default" >Send</button>
-                        : <button type="submit" className="btn btn-default" disabled >Send</button>
+                        : <button className="btn btn-default" disabled >Send</button>
                     }
                     </form>
 

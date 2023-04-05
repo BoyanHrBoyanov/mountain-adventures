@@ -20,14 +20,25 @@ export const Comment = ({
     return (
         <>
             <div className={styles.comment}>
-                {user?._id === comment._ownerId &&
-                    <button onClick={confirmDelete} className={styles.deleteBtn}>X</button>
-                }
-                {comment.username}: {comment.comment}
-                <p className={styles.time}>{formattedTime}</p>
-                {user?._id === comment._ownerId &&
-                    <button onClick={() => editComment(comment)} className={styles.editBtn}>Edit</button>
-                }
+                <div className="card">
+                    <div className="card-body">
+                        <div className={styles.headDiv}>
+                            <h5 className="card-title" style={{ display: 'flex' }}>{comment.username}</h5>
+                            <h5>{formattedTime}</h5>
+                        </div>
+                        <p style={{ color: 'black', display: 'flex' }}>{comment.comment}</p>
+                        <div className={styles.buttons}>
+                            {user?._id === comment._ownerId &&
+                                <button onClick={() => editComment(comment)}
+                                    className="btn btn-warning">Edit</button>
+                            }
+                            {user?._id === comment._ownerId &&
+                                <button onClick={confirmDelete}
+                                    className="btn-danger">X</button>
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     );
