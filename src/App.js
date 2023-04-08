@@ -31,7 +31,6 @@ function App() {
 		try {
 			const data = await post(paths.adventures, obj);
 			setStories(state => [data, ...state]);
-			setLastThree([data, ...lastThree].pop());
 
 		} catch (error) {
 			console.log(error);

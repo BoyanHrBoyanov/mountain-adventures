@@ -2,7 +2,6 @@ import { useState } from "react";
 
 import { CatalogItem } from "./CatalogItem";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
-import styles from './Catalog.module.css';
 import { Search } from "../Search/Search";
 import { NoPosts } from "../NoPosts/NoPosts";
 
@@ -25,7 +24,7 @@ export const Catalog = ({
                     ? <Search setSearch={setSearch} search={search} />
                     : null
                     }
-                <div className={styles.div}>
+                <div>
                     {loading
                         ? (<LoadingSpinner />)
                         : (
