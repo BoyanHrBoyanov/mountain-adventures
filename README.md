@@ -45,9 +45,9 @@ Every user can edit and delete their comments.
 ## In order to start the application loacaly
 1. you need node.js - v.16 or above installed
 2. clone this repository
-3. type 'npm install' in the project directory
-4. type 'node server.js' in the ./server directory
-5. type 'npm start' in the project directory
+3. run 'npm install' in the project directory
+4. run 'node server.js' in the ./server directory
+5. run 'npm start' in the project directory
 
 ## Architecture
 
